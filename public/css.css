@@ -1,9 +1,31 @@
-body {
-  font-family : sans-serif;
-  background  : black;
-  color       : white;
+:root {
+  --color-fg : white;
+  --color-bg : black;
 }
 
-#puzzle {
+body {
+  font-family : sans-serif;
+  background  : var(--color-bg);
+  color       : var(--color-fg);
+}
+
+a, a:visited {
+  color: var(--color-fg)
+}
+
+#list.show,
+#puzzle.show {
+  display : block;
+}
+
+#list.hide,
+#puzzle.hide {
   display : none;
 }
+
+#list img {
+  width   : 100px;
+  height  : 100px;
+  margin  : 0 1rem 1rem 0;
+}
+

@@ -1,9 +1,15 @@
 (function(){ 'use strict';
 
-  const el = document.getElementById( 'puzzle' )
+  const Puzzle = {}
 
-  console.log(el) 
+  Puzzle.render = (alt) => {
+    const img = document.createElement( 'img' )
+    const imgUrl = window.Config.images[alt] + window.Config.crop
+    img.src = imgUrl
+    window.Element.puzzle.append(img)
+  }
 
+  window.Puzzle = Puzzle
 })();
 
 
