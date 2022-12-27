@@ -1,0 +1,27 @@
+{
+  "name": "spin-puzzle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "gulpfile.js",
+  "scripts": {
+    "start": "gulp",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bighill/spin-puzzle.git"
+  },
+  "author": "bighill",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bighill/spin-puzzle/issues"
+  },
+  "homepage": "https://github.com/bighill/spin-puzzle#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.57.1"
+  }
+}

@@ -1,0 +1,9 @@
+body {
+  font-family : sans-serif;
+  background  : black;
+  color       : white;
+}
+
+#puzzle {
+  display : none;
+}
