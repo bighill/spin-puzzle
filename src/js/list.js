@@ -1,8 +1,8 @@
 (function () {
-  "use strict";
+  'use strict';
 
-  const handleClick = (ev) => {
-    window.Navigate("puzzle", ev.target.alt);
+  const _handleClick = (ev) => {
+    window.Navigate('puzzle', ev.target.alt);
     window.Puzzle.render(ev.target.alt);
   };
 
@@ -14,13 +14,14 @@
     const images = window.Config.images;
 
     for (let i in images) {
-      const img = document.createElement("img");
+      const img = document.createElement('img');
       img.src = images[i] + window.Config.crop;
       img.alt = i;
+      img.classList.add( 'clickable' )
 
-      img.addEventListener("click", handleClick);
+      img.addEventListener( 'click', _handleClick );
 
-      window.Element.list.append(img);
+      window.Config.el.list.append(img);
     }
   };
 

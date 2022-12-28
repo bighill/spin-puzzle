@@ -1,16 +1,15 @@
-(function () {
-  "use strict";
+(function () { "use strict";
 
-  const Navigate = (page, alt = "") => {
-    switch (page) {
+  const Navigate = ( page, alt = "" ) => {
+    switch ( page ) {
       case "list":
-        window.Element.list.classList = "show";
-        window.Element.puzzle.classList = "hide";
+        window.Config.el.list.classList = "show";
+        window.Config.el.puzzle.classList = "hide";
         break;
 
       case "puzzle":
-        window.Element.list.classList = "hide";
-        window.Element.puzzle.classList = "show";
+        window.Config.el.list.classList = "hide";
+        window.Config.el.puzzle.classList = "show";
         break;
     }
   };

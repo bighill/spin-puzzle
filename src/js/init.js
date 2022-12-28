@@ -1,11 +1,9 @@
-(function(){ 'use strict';
+(function () { 'use strict';
 
-  const init = () => 
-  {
+  const init = () => {
     window.List.render()
-    document.removeEventListener( 'DOMContentLoaded', init)
+    document.removeEventListener( 'DOMContentLoaded', init )
   }
 
-  document.addEventListener( 'DOMContentLoaded', init)
-
+  document.addEventListener( 'DOMContentLoaded', init )
 })();

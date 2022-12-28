@@ -10,8 +10,14 @@ body {
 }
 
 a, a:visited {
-  color: var(--color-fg)
+  color : var(--color-fg)
 }
+
+/*
+-
+- list
+-
+*/
 
 #list.show,
 #puzzle.show {
@@ -29,3 +35,23 @@ a, a:visited {
   margin  : 0 1rem 1rem 0;
 }
 
+/*
+-
+- puzzle
+-
+*/
+
+#puzzle img {
+  display : block;
+  margin  : 0 auto;
+}
+
+/*
+-
+- util
+-
+*/
+
+.clickable {
+  cursor : pointer;
+}

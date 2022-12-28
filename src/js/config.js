@@ -12,5 +12,10 @@
 
   Config.crop = '?fit=crop&w=600&h=600'
 
+  Config.el = {
+    list    : document.getElementById( 'list' ),
+    puzzle  : document.getElementById( 'puzzle' ),
+  }
+
   window.Config = Config
 })();
