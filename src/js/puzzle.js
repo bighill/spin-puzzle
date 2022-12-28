@@ -68,6 +68,15 @@
     return block
   })
 
+  const _handleClick = ev => {
+    const r = parseInt( ev.target.dataset.r )
+
+    const newRotation = r === ROTATION.length - 1 ? 0 : r + 1
+
+    ev.target.dataset.r           = newRotation
+    ev.target.style['transform']  = `rotate( ${ROTATION[newRotation]} )`
+  }
+
   //
 
   const Puzzle = {}
@@ -77,6 +86,7 @@
     const blocks  = _makeBlocks( blockData, imgUrl )
 
     blocks.forEach( b => PUZZEL_EL.append( b ) )
+    blocks.forEach( b => b.addEventListener( 'click', _handleClick ) )
   };
 
   window.Puzzle = Puzzle
