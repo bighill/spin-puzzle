@@ -1,9 +1,16 @@
+/*
+|
+|
+| Init
+|
+|
+*/
 (function () { 'use strict';
 
-  const init = () => {
+  const Init = () => {
     window.List.render()
-    document.removeEventListener( 'DOMContentLoaded', init )
+    document.removeEventListener( 'DOMContentLoaded', Init )
   }
 
-  document.addEventListener( 'DOMContentLoaded', init )
+  document.addEventListener( 'DOMContentLoaded', Init )
 })();

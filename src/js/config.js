@@ -1,23 +1,30 @@
+/*
+|
+|
+| Config
+|
+|
+*/
 (function(){ 'use strict';
 
-const Config = {}
+  const Config = {}
 
-Config.images = {
-  mountain  : 'https://images.unsplash.com/photo-1605460516895-bc095b6b66a7',
-  desert    : 'https://images.unsplash.com/photo-1671961878559-4a8975418640',
-  building  : 'https://images.unsplash.com/photo-1671705449511-06c390d6417f',
-  jungle    : 'https://images.unsplash.com/photo-1669166717463-38a78c93412b',
-  sunrise   : 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
-}
+  Config.images = {
+    mountain  : 'https://images.unsplash.com/photo-1605460516895-bc095b6b66a7',
+    desert    : 'https://images.unsplash.com/photo-1671961878559-4a8975418640',
+    building  : 'https://images.unsplash.com/photo-1671705449511-06c390d6417f',
+    jungle    : 'https://images.unsplash.com/photo-1669166717463-38a78c93412b',
+    sunrise   : 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
+  }
 
-Config.crop = '?fit=crop&w=600&h=600'
+  Config.crop = '?fit=crop&w=600&h=600'
 
-Config.el = {
-  list    : document.getElementById( 'list' ),
-  puzzle  : document.getElementById( 'puzzle' ),
-}
+  Config.el = {
+    list    : document.getElementById( 'list' ),
+    puzzle  : document.getElementById( 'puzzle' ),
+  }
 
-Config.rotation = ['0deg', '90deg', '180deg', '270deg']
+  Config.rotation = ['0deg', '90deg', '180deg', '270deg']
 
-window.Config = Config
+  window.Config = Config
 })();

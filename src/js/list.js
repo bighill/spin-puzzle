@@ -1,5 +1,11 @@
-(function () {
-  'use strict';
+/*
+|
+|
+| List
+|
+|
+*/
+(function () { 'use strict';
 
   const _handleClick = (ev) => {
     window.Navigate('puzzle', ev.target.alt);
@@ -15,10 +21,10 @@
 
     for (let i in images) {
       const img = document.createElement('img');
-      img.src = images[i] + window.Config.crop;
-      img.alt = i;
-      img.classList.add( 'clickable' )
+      img.src   = images[i] + window.Config.crop;
+      img.alt   = i;
 
+      img.classList.add( 'clickable' )
       img.addEventListener( 'click', _handleClick );
 
       window.Config.el.list.append(img);
