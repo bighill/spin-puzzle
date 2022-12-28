@@ -1,23 +1,25 @@
 (function(){ 'use strict';
 
-  const Config = {}
+const Config = {}
 
-  Config.images = {
-    mountain  : 'https://images.unsplash.com/photo-1605460516895-bc095b6b66a7',
-    desert    : 'https://images.unsplash.com/photo-1671961878559-4a8975418640',
-    building  : 'https://images.unsplash.com/photo-1671705449511-06c390d6417f',
-    jungle    : 'https://images.unsplash.com/photo-1669166717463-38a78c93412b',
-    sunrise   : 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
-  }
+Config.images = {
+  mountain  : 'https://images.unsplash.com/photo-1605460516895-bc095b6b66a7',
+  desert    : 'https://images.unsplash.com/photo-1671961878559-4a8975418640',
+  building  : 'https://images.unsplash.com/photo-1671705449511-06c390d6417f',
+  jungle    : 'https://images.unsplash.com/photo-1669166717463-38a78c93412b',
+  sunrise   : 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
+}
 
-  Config.crop = '?fit=crop&w=600&h=600'
+Config.crop = '?fit=crop&w=600&h=600'
 
-  Config.el = {
-    list    : document.getElementById( 'list' ),
-    puzzle  : document.getElementById( 'puzzle' ),
-  }
+Config.el = {
+  list    : document.getElementById( 'list' ),
+  puzzle  : document.getElementById( 'puzzle' ),
+}
 
-  window.Config = Config
+Config.rotation = ['0deg', '90deg', '180deg', '270deg']
+
+window.Config = Config
 })();
 
 (function () { 'use strict';
@@ -81,16 +83,75 @@
 
 (function () { "use strict";
 
-  const Puzzle = {}
+const ROTATION  = window.Config.rotation
+const PUZZEL_EL = window.Config.el.puzzle
 
-  Puzzle.render = alt => {
-    const img     = document.createElement( 'img' )
-    const imgUrl  = window.Config.images[alt] + window.Config.crop
-    img.src       = imgUrl
+const _randRotation  = () => Math.floor( Math.random() * ROTATION.length )
 
-    window.Config.el.puzzle.innerHTML = ''
-    window.Config.el.puzzle.append( img )
-  };
+const blockData = [
+  { x : 0, y : 0, r : _randRotation() },
+  { x : 0, y : 1, r : _randRotation() },
+  { x : 0, y : 2, r : _randRotation() },
+  { x : 0, y : 3, r : _randRotation() },
+  { x : 0, y : 4, r : _randRotation() },
+  { x : 0, y : 5, r : _randRotation() },
+  { x : 1, y : 0, r : _randRotation() },
+  { x : 1, y : 1, r : _randRotation() },
+  { x : 1, y : 2, r : _randRotation() },
+  { x : 1, y : 3, r : _randRotation() },
+  { x : 1, y : 4, r : _randRotation() },
+  { x : 1, y : 5, r : _randRotation() },
+  { x : 2, y : 0, r : _randRotation() },
+  { x : 2, y : 1, r : _randRotation() },
+  { x : 2, y : 2, r : _randRotation() },
+  { x : 2, y : 3, r : _randRotation() },
+  { x : 2, y : 4, r : _randRotation() },
+  { x : 2, y : 5, r : _randRotation() },
+  { x : 3, y : 0, r : _randRotation() },
+  { x : 3, y : 1, r : _randRotation() },
+  { x : 3, y : 2, r : _randRotation() },
+  { x : 3, y : 3, r : _randRotation() },
+  { x : 3, y : 4, r : _randRotation() },
+  { x : 3, y : 5, r : _randRotation() },
+  { x : 4, y : 0, r : _randRotation() },
+  { x : 4, y : 1, r : _randRotation() },
+  { x : 4, y : 2, r : _randRotation() },
+  { x : 4, y : 3, r : _randRotation() },
+  { x : 4, y : 4, r : _randRotation() },
+  { x : 4, y : 5, r : _randRotation() },
+  { x : 5, y : 0, r : _randRotation() },
+  { x : 5, y : 1, r : _randRotation() },
+  { x : 5, y : 2, r : _randRotation() },
+  { x : 5, y : 3, r : _randRotation() },
+  { x : 5, y : 4, r : _randRotation() },
+  { x : 5, y : 5, r : _randRotation() },
+]
 
-  window.Puzzle = Puzzle
+const _makeBlocks = ( data, img ) => data.map( b => {
+  const block = document.createElement( 'div' )
+
+  block.classList.add( 'block' )
+  block.dataset.r   = b.r
+  block.dataset.x   = b.x
+  block.dataset.y   = b.y
+
+  block.style['top']                  = `${b.y * 100}px`
+  block.style['left']                 = `${b.x * 100}px`
+  block.style['transform']            = `rotate( ${ROTATION[b.r]} )`
+  block.style['background']           = `url( ${img} )`
+  block.style['background-position']  = `top ${b.y * -100}px left ${b.x * -100}px`
+
+  return block
+})
+
+const Puzzle = {}
+
+Puzzle.render = alt => {
+  const imgUrl  = window.Config.images[alt] + window.Config.crop
+  const blocks  = _makeBlocks( blockData, imgUrl )
+
+  blocks.forEach( b => PUZZEL_EL.append( b ) )
+};
+
+window.Puzzle = Puzzle
 })();

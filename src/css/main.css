@@ -41,9 +41,20 @@ a, a:visited {
 -
 */
 
-#puzzle img {
-  display : block;
-  margin  : 0 auto;
+#puzzle {
+  position  : relative;
+  margin    : 0 auto;
+
+  /* TODO dynamic */
+  width     : 600px;
+}
+
+#puzzle .block {
+  position    : absolute;
+
+  /* TODO dynamic */
+  height      : 100px;
+  width       : 100px;
 }
 
 /*
