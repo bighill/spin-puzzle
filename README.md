@@ -28,6 +28,6 @@ npm start
 With gulp running...
 
 - Edit files in `src`
-- Gulp will write to `public`
+- Gulp will write to `docs`
 - Gulp will hot reload
 - View in browser [http://localhost:8080/](http://localhost:8080/)
