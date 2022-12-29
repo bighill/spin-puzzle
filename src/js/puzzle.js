@@ -12,7 +12,8 @@
   | random rotation index
   |
   */
-  const _randRotation = () => Math.floor( Math.random() * ROTATION.length )
+  // const _randRotation = () => Math.floor( Math.random() * ROTATION.length )
+  const _randRotation = () => 0
 
   /*
   |
@@ -88,7 +89,10 @@
   | handle win
   |
   */
-  const _handleWin = () => alert( 'You Won!' )
+  const _handleWin = () => {
+    console.log( 'You Won!' )
+    alert( 'You Won!' )
+  }
 
   /*
   |
