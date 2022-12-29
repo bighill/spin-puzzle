@@ -5,6 +5,8 @@ Simple puzzle game.
 This is incomplete. It's just a proof-of-concept. However, the gameplay should
 work as intended.
 
+[Play the Demo](https://bighill.github.io/spin-puzzle/)
+
 ## Stack
 
 Vanilla HTML/JS/CSS
