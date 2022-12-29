@@ -10,7 +10,8 @@ body {
 }
 
 a, a:visited {
-  color : var(--color-fg)
+  color           : var(--color-fg);
+  text-decoration : none;
 }
 
 /*
@@ -62,6 +63,15 @@ a, a:visited {
 - util
 -
 */
+
+.side-by-side-wrap {
+  display     : flex;
+  align-items : baseline;
+}
+
+.side-by-side-wrap h1{
+  flex-grow : 1;
+}
 
 .clickable {
   cursor : pointer;

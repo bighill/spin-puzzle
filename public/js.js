@@ -55,15 +55,30 @@
 */
 (function () { 'use strict';
 
+  /*
+  |
+  | handle click
+  |
+  */
   const _handleClick = (ev) => {
     window.Navigate('puzzle', ev.target.alt);
     window.Puzzle.render(ev.target.alt);
   };
 
-  //
+  // // //
 
+  /*
+  |
+  | list
+  |
+  */
   const List = {};
 
+  /*
+  |
+  | render list
+  |
+  */
   List.render = () => {
     const images = window.Config.images;
 
@@ -92,7 +107,6 @@
 (function () { "use strict";
 
   const Navigate = ( page ) => {
-
     switch ( page ) {
 
       case "list":
@@ -104,6 +118,7 @@
         window.Config.el.list   .classList = "hide";
         window.Config.el.puzzle .classList = "show";
         break;
+
     }
   };
 
@@ -119,12 +134,22 @@
 */
 (function () { "use strict";
 
-  const ROTATION  = window.Config.rotation
-  const PUZZEL_EL = window.Config.el.puzzle
+  /*
+  |
+  | random rotation index
+  |
+  */
+  const _randRotation = () => Math.floor( Math.random() * ROTATION.length )
 
-  const _randRotation  = () => Math.floor( Math.random() * ROTATION.length )
+  /*
+  |
+  | constant
+  |
+  */
+  const ROTATION    = window.Config.rotation
+  const PUZZEL_EL   = window.Config.el.puzzle
 
-  const blockData = [
+  const BLOCKS_INIT = [
     { x : 0, y : 0, r : _randRotation() },
     { x : 0, y : 1, r : _randRotation() },
     { x : 0, y : 2, r : _randRotation() },
@@ -163,6 +188,11 @@
     { x : 5, y : 5, r : _randRotation() },
   ]
 
+  /*
+  |
+  | make blocks
+  |
+  */
   const _makeBlocks = ( data, img ) => data.map( b => {
     const block = document.createElement( 'div' )
 
@@ -180,6 +210,41 @@
     return block
   })
 
+  /*
+  |
+  | handle win
+  |
+  */
+  const _handleWin = () => alert( 'You Won!' )
+
+  /*
+  |
+  | check for win
+  |
+  */
+  const _checkWin = () => {
+    const blocks  = PUZZEL_EL.getElementsByClassName( 'block' )
+    let isWin     = true
+
+    // is win when all blocks have a rotation index (r) of 0
+    for ( let i = 0; i < blocks.length; i++ ) {
+      const r = parseInt( blocks[i].dataset.r )
+
+      if (r) {
+        isWin = false
+      }
+    }
+
+    if (isWin) {
+      _handleWin()
+    }
+  }
+
+  /*
+  |
+  | handle click
+  |
+  */
   const _handleClick = ev => {
     const r = parseInt( ev.target.dataset.r )
 
@@ -187,15 +252,27 @@
 
     ev.target.dataset.r           = newRotation
     ev.target.style['transform']  = `rotate( ${ROTATION[newRotation]} )`
+
+    _checkWin()
   }
 
-  //
+  // // //
 
+  /*
+  |
+  | puzzle
+  |
+  */
   const Puzzle = {}
 
+  /*
+  |
+  | render puzzle
+  |
+  */
   Puzzle.render = alt => {
     const imgUrl  = window.Config.images[alt] + window.Config.crop
-    const blocks  = _makeBlocks( blockData, imgUrl )
+    const blocks  = _makeBlocks( BLOCKS_INIT, imgUrl )
 
     blocks.forEach( b => PUZZEL_EL.append( b ) )
     blocks.forEach( b => b.addEventListener( 'click', _handleClick ) )

@@ -7,15 +7,30 @@
 */
 (function () { 'use strict';
 
+  /*
+  |
+  | handle click
+  |
+  */
   const _handleClick = (ev) => {
     window.Navigate('puzzle', ev.target.alt);
     window.Puzzle.render(ev.target.alt);
   };
 
-  //
+  // // //
 
+  /*
+  |
+  | list
+  |
+  */
   const List = {};
 
+  /*
+  |
+  | render list
+  |
+  */
   List.render = () => {
     const images = window.Config.images;
 
