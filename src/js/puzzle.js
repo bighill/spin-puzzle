@@ -12,8 +12,7 @@
   | random rotation index
   |
   */
-  // const _randRotation = () => Math.floor( Math.random() * ROTATION.length )
-  const _randRotation = () => 0
+  const _randRotation = () => Math.floor( Math.random() * ROTATION.length )
 
   /*
   |
