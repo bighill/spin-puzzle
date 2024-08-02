@@ -1,0 +1,81 @@
+:root {
+  --color-fg: white;
+  --color-bg: black;
+}
+
+body {
+  font-family: sans-serif;
+  background: var(--color-bg);
+  color: var(--color-fg);
+}
+
+a,
+a:visited {
+  color: var(--color-fg);
+  text-decoration: none;
+}
+
+header {
+  display: flex;
+  align-items: baseline;
+}
+
+header h1 {
+  flex-grow: 1;
+}
+
+/*
+-
+- list + puzzle
+-
+*/
+
+#list,
+#puzzle {
+  display: none;
+}
+
+#list.show,
+#puzzle.show {
+  display: block;
+}
+
+/*
+-
+- list
+-
+*/
+
+#list img {
+  width: 100px;
+  height: 100px;
+  margin: 0 1rem 1rem 0;
+}
+
+/*
+-
+- puzzle
+-
+*/
+
+#puzzle {
+  position: relative;
+  margin: 0 auto;
+  width: 600px;
+}
+
+#puzzle .block {
+  position: absolute;
+  height: 100px;
+  width: 100px;
+}
+
+/*
+-
+- util
+-
+*/
+
+.clickable {
+  cursor: pointer;
+}
