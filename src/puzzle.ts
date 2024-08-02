@@ -70,6 +70,7 @@ const cheat = (blocks: HTMLElement[]): HTMLElement[] => {
 /**
  * Make blocks
  */
+// TODO perc sizing for narrow screen
 const makeBlocks = (imgUrl: string) => {
   const blocks = data.map((d) => {
     const block = document.createElement('div')
