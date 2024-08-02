@@ -1,7 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
-  base: '/puzzle-game/',
+  base: '/spin-puzzle/',
   // build: {
   //   outDir: 'docs',
   // },
