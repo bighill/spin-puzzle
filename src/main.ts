@@ -23,6 +23,7 @@ function init() {
   /**
    * Render list of puzzles
    */
+  // TODO responsive layout
   for (let i in c.images) {
     const [k, v] = [i, c.images[i]]
     const imgEl = document.createElement('img')

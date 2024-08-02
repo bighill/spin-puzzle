@@ -19,6 +19,7 @@ const config: Config = {
     sunrise: 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
   },
 
+  // TODO thumbnail crops for list
   cropParams: '?fit=crop&w=600&h=600',
 
   el: {

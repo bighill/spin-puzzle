@@ -70,7 +70,7 @@ const cheat = (blocks: HTMLElement[]): HTMLElement[] => {
 /**
  * Make blocks
  */
-// TODO perc sizing for narrow screen
+// TODO perc sizing for narrow screen, max puzzle width 600px
 const makeBlocks = (imgUrl: string) => {
   const blocks = data.map((d) => {
     const block = document.createElement('div')
@@ -165,6 +165,8 @@ const puzzle = (imgUrl: string) => {
 
   // Render
   blocks.forEach((b) => c.el.puzzle && c.el.puzzle.append(b))
+
+  // TODO photo credits
 
   // Listen
   blocks.forEach((b) => b.addEventListener('click', handleClick))
