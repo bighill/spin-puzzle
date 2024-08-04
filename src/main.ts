@@ -21,18 +21,17 @@ function init(): void {
       return
     }
 
-    // New game
-    puzzle(imageId)
-
     // Nav
     c.el.list && c.el.list.classList.remove('show')
     c.el.puzzle && c.el.puzzle.classList.add('show')
+
+    // New game
+    puzzle(imageId)
   }
 
   /**
    * Render list of puzzles
    */
-  // TODO responsive layout
   for (let i in c.images) {
     const [k, v] = [i, c.images[i]]
     const imgEl = document.createElement('img')

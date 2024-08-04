@@ -1,5 +1,11 @@
 import c from './config'
 
+type Data = {
+  x: number
+  y: number
+  r: number
+}
+
 /**
  * Rotation values
  */
@@ -13,7 +19,7 @@ const randRotation = () => Math.floor(Math.random() * ROTATION.length)
 /**
  * Data
  */
-const data = [
+const data: Data[] = [
   { x: 0, y: 0, r: randRotation() },
   { x: 0, y: 1, r: randRotation() },
   { x: 0, y: 2, r: randRotation() },
@@ -68,10 +74,9 @@ const cheat = (blocks: HTMLElement[]): HTMLElement[] => {
 }
 
 /**
- * Make blocks
+ * Initialize blocks
  */
-// TODO perc sizing for narrow screen, max puzzle width 600px
-const makeBlocks = (imgUrl: string) => {
+const initBlocks = (imgUrl: string) => {
   const blocks = data.map((d) => {
     const block = document.createElement('div')
 
@@ -79,21 +84,37 @@ const makeBlocks = (imgUrl: string) => {
     block.dataset.r = d.r.toString()
     block.dataset.x = d.x.toString()
     block.dataset.y = d.y.toString()
-
-    block.style['top'] = `${d.y * 100}px`
-    block.style['left'] = `${d.x * 100}px`
     block.style['transform'] = `rotate( ${ROTATION[d.r]} )`
     block.style['background'] = `url( ${imgUrl} )`
-    block.style['background-position' as any] = `top ${d.y * -100}px left ${
-      d.x * -100
-    }px`
 
     return block
   })
 
   // NOTE toggle cheat mode here
-  const isCheatMode = false
+  const isCheatMode = true
   return isCheatMode ? cheat(blocks) : blocks
+}
+
+/**
+ * Resize blocks (mutate)
+ */
+// TODO offset to use center of image in puzzle
+const resizeBlocks = (blocks: HTMLElement[]) => {
+  const puzzleSize = c.el.puzzle?.clientWidth || 0
+
+  blocks.forEach((block) => {
+    const x = parseInt(block.dataset.x || '0')
+    const y = parseInt(block.dataset.y || '0')
+    const blockSize = Math.floor(puzzleSize / 6)
+
+    block.style['top'] = `${y * blockSize}px`
+    block.style['left'] = `${x * blockSize}px`
+    block.style['width'] = `${blockSize}px`
+    block.style['height'] = `${blockSize}px`
+    block.style['background-position' as any] = `top ${y * -blockSize}px left ${
+      x * -blockSize
+    }px`
+  })
 }
 
 /**
@@ -149,7 +170,6 @@ const checkWin = (): void => {
  */
 const handleClick = (ev: MouseEvent) => {
   const target = ev.target as HTMLElement
-
   rotate(target)
   setTimeout(checkWin, 0)
 }
@@ -157,20 +177,27 @@ const handleClick = (ev: MouseEvent) => {
 /**
  * Puzzle
  */
+// TODO photo credits
 const puzzle = (imageId: string) => {
   const imgUrl = c.images[imageId] + c.cropParams600
-  const blocks = makeBlocks(imgUrl)
+  const blocks = initBlocks(imgUrl)
 
-  // Reset
+  // Resize blocks (mutate)
+  resizeBlocks(blocks)
+
+  // Listen for clicks
+  blocks.forEach((b) => b.addEventListener('click', handleClick))
+
+  // Reset puzzle
   c.el.puzzle && (c.el.puzzle.innerHTML = '')
 
-  // Render
+  // Render blocks to puzzle
   blocks.forEach((b) => c.el.puzzle && c.el.puzzle.append(b))
 
-  // TODO photo credits
-
-  // Listen
-  blocks.forEach((b) => b.addEventListener('click', handleClick))
+  // Listen for window resize
+  window.addEventListener('resize', () => {
+    resizeBlocks(blocks)
+  })
 }
 
 export default puzzle

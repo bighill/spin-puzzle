@@ -89,13 +89,13 @@ header h1 {
 #puzzle {
   position: relative;
   margin: 0 auto;
-  width: 600px;
+  width: 100%;
+  max-width: 600px;
 }
 
 #puzzle .block {
   position: absolute;
-  height: 100px;
-  width: 100px;
+  /* width, height, top, & left are set in JS */
 }
 
 /*
