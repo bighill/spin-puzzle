@@ -98,9 +98,10 @@ const initBlocks = (imgUrl: string) => {
 /**
  * Resize blocks (mutate)
  */
-// TODO offset to use center of image in puzzle
 const resizeBlocks = (blocks: HTMLElement[]) => {
+  const IMAGE_SIZE = 600
   const puzzleSize = c.el.puzzle?.clientWidth || 0
+  const offset = Math.floor((IMAGE_SIZE - puzzleSize) / 2)
 
   blocks.forEach((block) => {
     const x = parseInt(block.dataset.x || '0')
@@ -111,9 +112,9 @@ const resizeBlocks = (blocks: HTMLElement[]) => {
     block.style['left'] = `${x * blockSize}px`
     block.style['width'] = `${blockSize}px`
     block.style['height'] = `${blockSize}px`
-    block.style['background-position' as any] = `top ${y * -blockSize}px left ${
-      x * -blockSize
-    }px`
+    block.style['background-position' as any] = `top ${
+      y * -blockSize - offset
+    }px left ${x * -blockSize - offset}px`
   })
 }
 
