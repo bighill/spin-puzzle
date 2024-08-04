@@ -157,7 +157,8 @@ const handleClick = (ev: MouseEvent) => {
 /**
  * Puzzle
  */
-const puzzle = (imgUrl: string) => {
+const puzzle = (imageId: string) => {
+  const imgUrl = c.images[imageId] + c.cropParams600
   const blocks = makeBlocks(imgUrl)
 
   // Reset

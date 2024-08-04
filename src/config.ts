@@ -2,7 +2,8 @@ interface Config {
   images: {
     [key: string]: string
   }
-  cropParams: string
+  cropParams200: string
+  cropParams600: string
   el: {
     h1: HTMLElement | null
     list: HTMLElement | null
@@ -19,8 +20,8 @@ const config: Config = {
     sunrise: 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
   },
 
-  // TODO thumbnail crops for list
-  cropParams: '?fit=crop&w=600&h=600',
+  cropParams200: '?fit=crop&w=200&h=200',
+  cropParams600: '?fit=crop&w=600&h=600',
 
   el: {
     h1: document.querySelector('h1'),

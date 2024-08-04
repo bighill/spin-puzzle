@@ -2,7 +2,7 @@ import './style.css'
 import c from './config'
 import puzzle from './puzzle'
 
-function init() {
+function init(): void {
   /**
    * Reset on h1 click
    */
@@ -14,8 +14,17 @@ function init() {
   /**
    * Start new game
    */
-  function startNewGame(this: HTMLImageElement) {
-    puzzle(this.src)
+  function startNewGame(this: HTMLImageElement): void {
+    const imageId = this.dataset.imageId
+    if (!imageId) {
+      console.error('No imageId found')
+      return
+    }
+
+    // New game
+    puzzle(imageId)
+
+    // Nav
     c.el.list && c.el.list.classList.remove('show')
     c.el.puzzle && c.el.puzzle.classList.add('show')
   }
@@ -28,8 +37,9 @@ function init() {
     const [k, v] = [i, c.images[i]]
     const imgEl = document.createElement('img')
 
-    imgEl.src = v + c.cropParams
+    imgEl.src = v + c.cropParams200
     imgEl.alt = k
+    imgEl.dataset.imageId = k
     imgEl.classList.add('clickable')
     imgEl.addEventListener('click', startNewGame)
 
