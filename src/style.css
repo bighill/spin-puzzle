@@ -7,12 +7,18 @@ body {
   font-family: sans-serif;
   background: var(--color-bg);
   color: var(--color-fg);
+  padding: 0 0.5rem;
 }
 
 a,
 a:visited {
   color: var(--color-fg);
   text-decoration: none;
+}
+
+main {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 header {
@@ -35,7 +41,10 @@ header h1 {
   display: none;
 }
 
-#list.show,
+#list.show {
+  display: grid;
+}
+
 #puzzle.show {
   display: block;
 }
@@ -46,10 +55,29 @@ header h1 {
 -
 */
 
+#list {
+  /* display: grid; */ /* this is controlled above */
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+@media (min-width: 444px) {
+  #list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 666px) {
+  #list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 #list img {
-  width: 200px;
-  height: 200px;
-  margin: 0 1rem 1rem 0;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
 }
 
 /*
