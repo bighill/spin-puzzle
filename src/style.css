@@ -3,11 +3,18 @@
   --color-bg: black;
 }
 
+html,
+body,
+main {
+  height: 100%;
+}
+
 body {
-  font-family: sans-serif;
   background: var(--color-bg);
   color: var(--color-fg);
-  padding: 0 0.5rem;
+  font-family: sans-serif;
+  padding: 0 1rem;
+  margin: 0;
 }
 
 a,
@@ -22,17 +29,26 @@ main {
 }
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  background: var(--color-bg);
+  margin: 0 0 1rem;
+  box-shadow: 0 0 15px 10px rgba(0, 0, 0, 0.9);
+
   display: flex;
   align-items: baseline;
 }
 
 header h1 {
   flex-grow: 1;
+  margin: 1rem 0 0;
 }
 
 /*
 -
-- list + puzzle
+- list + puzzle nav
 -
 */
 
@@ -56,6 +72,8 @@ header h1 {
 */
 
 #list {
+  margin: 0 0 1rem;
+
   /* display: grid; */ /* this is controlled above */
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
