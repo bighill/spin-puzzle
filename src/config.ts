@@ -18,6 +18,9 @@ const config: Config = {
     building: 'https://images.unsplash.com/photo-1671705449511-06c390d6417f',
     jungle: 'https://images.unsplash.com/photo-1669166717463-38a78c93412b',
     sunrise: 'https://images.unsplash.com/photo-1671227498016-93aa927686f8',
+    flower: 'https://images.unsplash.com/photo-1722705988572-e9b589fbf2bf',
+    galleria: 'https://images.unsplash.com/photo-1722159375321-048d8556dd94',
+    stars: 'https://images.unsplash.com/photo-1721853046219-209921be684e',
   },
 
   cropParams200: '?fit=crop&w=200&h=200',
