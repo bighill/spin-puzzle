@@ -91,7 +91,7 @@ const initBlocks = (imgUrl: string) => {
   })
 
   // NOTE toggle cheat mode here
-  const isCheatMode = true
+  const isCheatMode = false
   return isCheatMode ? cheat(blocks) : blocks
 }
 
